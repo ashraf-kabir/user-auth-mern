@@ -39,6 +39,21 @@ class Landing extends Component {
       </ul>
     )
 
+    const adminLink = (
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link to="/admin" className="nav-link">
+            Admin
+          </Link>
+        </li>
+        <li className="nav-item">
+          <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+            Logout
+          </a>
+        </li>
+      </ul>
+    )
+
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
         <button

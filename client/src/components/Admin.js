@@ -29,7 +29,7 @@ class Profile extends Component {
       <div className="container">
         <div className="jumbotron mt-5">
           <div className="col-sm-8 mx-auto">
-            <h1 className="text-center">User PROFILE</h1>
+            <h1 className="text-center">Admin PROFILE</h1>
           </div>
           <table className="table col-md-6 mx-auto">
             <tbody>

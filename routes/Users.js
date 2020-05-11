@@ -16,6 +16,7 @@ users.post('/register', (req, res) => {
     last_name: req.body.last_name,
     email: req.body.email,
     password: req.body.password,
+    role: req.body.role,
     created: today
   }
 
@@ -82,6 +83,27 @@ users.get('/profile', (req, res) => {
         res.json(user)
       } else {
         res.send('User does not exist')
+      }
+    })
+    .catch(err => {
+      res.send('error: ' + err)
+    })
+})
+
+
+users.get('/admin', (req, res) => {
+  var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+  User.findOne({
+    where: {
+      id: decoded.id
+    }
+  })
+    .then(admin => {
+      if (admin) {
+        res.json(admin)
+      } else {
+        res.send('Admin does not exist')
       }
     })
     .catch(err => {
