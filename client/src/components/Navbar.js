@@ -80,6 +80,7 @@ class Landing extends Component {
             </li>
           </ul>
           {localStorage.usertoken ? userLink : loginRegLink}
+          {/* {adminLink} */}
         </div>
       </nav>
     )

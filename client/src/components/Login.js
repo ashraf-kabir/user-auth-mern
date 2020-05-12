@@ -9,23 +9,33 @@ class Login extends Component {
       password: '',
       role: '',
       errors: {}
-    }
+    };
 
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
   onSubmit(e) {
-    e.preventDefault()
+    if (this.state.email === "") {
+      alert('empty email');
+    }
+    if (this.state.password === "") {
+      alert('empty password');
+    }
+    if (this.state.role === "") {
+      alert('empty role');
+    }
+
+    e.preventDefault();
 
     // if (role)
     const user = {
       email: this.state.email,
       password: this.state.password,
-      role: this.state.role,
+      role: this.state.role
       // roleCheck: user.role
     }
 
@@ -97,7 +107,7 @@ class Login extends Component {
         }
       });
     } else {
-      alert('one or many empty field')
+      // alert('error')
     }
 
     // const admin = {
@@ -105,8 +115,7 @@ class Login extends Component {
     //   password: this.state.password,
     //   role: this.state.role
     // }
-
-    
+  
   }
 
   render() {
@@ -146,7 +155,7 @@ class Login extends Component {
                   </div>
                 </div>
 
-                <div className="form-group">
+                {/* <div className="form-group">
                   <div className="col-md-12">
                     <label htmlFor="email">Role</label>
                     <input
@@ -158,16 +167,34 @@ class Login extends Component {
                       onChange={this.onChange}
                     />
                   </div>
-                </div>
-                
+                </div> */}
+
                 <div className="form-group">
                   <div className="col-md-12">
+                  <label>
+                      Your Role:
+                      <select className="form-control" name="role" value={this.state.role} onChange={this.onChange}>
+                        <option value="">--Select--</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+                
+                <div className="form-group text-center account-btn">
+                  <div className="row">
+                  <div className="col-md-4">
+                    </div>
+                  <div className="col-md-4">
                     <button
                     type="submit"
-                    className="btn btn-lg btn-primary btn-block"
+                    className="btn btn-md btn-primary btn-block"
                   >
                     Sign in
                   </button>
+                  </div>
+                  
                   </div>
                 </div>
               </form>

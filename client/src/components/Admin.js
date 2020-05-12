@@ -45,8 +45,13 @@ class Profile extends Component {
                 <td>Email</td>
                 <td>{this.state.email}</td>
               </tr>
+              <tr>
+                <td>User Role</td>
+                <td>{this.state.role}</td>
+              </tr>
             </tbody>
           </table>
+          <a href="dashboard.js">Dashboard</a>
         </div>
       </div>
     )
