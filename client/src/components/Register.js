@@ -21,19 +21,41 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
   onSubmit(e) {
-    e.preventDefault()
+    if (this.state.first_name === "" ||  this.state.last_name === "" || this.state.email === "" || this.state.password === "" || this.state.role === "") {
+      alert('empty fields');
+    } else {
+      e.preventDefault();
 
-    const newUser = {
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      email: this.state.email,
-      password: this.state.password,
-      role: this.state.role
+      const newUser = {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        email: this.state.email,
+        password: this.state.password,
+        role: this.state.role
+      }
+
+      register(newUser).then(res => {
+        this.props.history.push(`/login`)
+      });
     }
 
-    register(newUser).then(res => {
-      this.props.history.push(`/login`)
-    })
+    // if (this.state.last_name === "") {
+    //   alert('empty last name');
+    // }
+
+    // if (this.state.email === "") {
+    //   alert('empty email');
+    // }
+
+    // if (this.state.password === "") {
+    //   alert('empty password');
+    // }
+
+    // if (this.state.role === "") {
+    //   alert('empty user role');
+    // }
+
+    
   }
 
   render() {
@@ -48,7 +70,7 @@ class Register extends Component {
                   <div className="col-md-12">
                     <label htmlFor="name">First name</label>
                     <input
-                      type="text"
+                      type="text" required
                       className="form-control"
                       name="first_name"
                       placeholder="Enter your first name"
@@ -62,7 +84,7 @@ class Register extends Component {
                   <div className="col-md-12">
                     <label htmlFor="name">Last name</label>
                     <input
-                      type="text"
+                      type="text" required
                       className="form-control"
                       name="last_name"
                       placeholder="Enter your lastname name"
@@ -76,7 +98,7 @@ class Register extends Component {
                   <div className="col-md-12">
                     <label htmlFor="email">Email address</label>
                     <input
-                      type="email"
+                      type="email" required
                       className="form-control"
                       name="email"
                       placeholder="Enter email"
@@ -90,7 +112,7 @@ class Register extends Component {
                   <div className="col-md-12">
                     <label htmlFor="password">Password</label>
                     <input
-                      type="password"
+                      type="password" required
                       className="form-control"
                       name="password"
                       placeholder="Password"
@@ -100,7 +122,7 @@ class Register extends Component {
                   </div>
                 </div>
 
-                <div className="form-group">
+                {/* <div className="form-group">
                   <div className="col-md-12">
                     <label htmlFor="role">Role</label>
                     <input
@@ -111,6 +133,19 @@ class Register extends Component {
                       value={this.state.role}
                       onChange={this.onChange}
                     />
+                  </div>
+                </div> */}
+
+                <div className="form-group">
+                  <div className="col-md-12">
+                  <label>
+                      Your Role:
+                      <select className="form-control" required name="role" value={this.state.role} onChange={this.onChange}>
+                        <option value="">--Select--</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                      </select>
+                    </label>
                   </div>
                 </div>
 

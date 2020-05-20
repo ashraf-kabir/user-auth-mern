@@ -51,7 +51,7 @@ class Profile extends Component {
               </tr>
             </tbody>
           </table>
-          <a href="dashboard.js">Dashboard</a>
+          <a target="_blank" href="file:///D:/login-bootstrap/index.html">Dashboard</a>
         </div>
       </div>
     )
